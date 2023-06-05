@@ -4,9 +4,6 @@ services:
     build:
       context: /home/roberto/practice_docker_kubernetes/awesome-compose/react-nginx
       dockerfile: Dockerfile
-    command:
-    - bash
-    - /pipeline.sh
     container_name: frontend
     networks:
       default: null

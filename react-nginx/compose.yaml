@@ -5,3 +5,6 @@ services:
     container_name: frontend
     ports:
       - "80:80"
+    volumes:
+      - ./pipeline.sh:/pipeline.sh
+    command: bash /pipeline.sh

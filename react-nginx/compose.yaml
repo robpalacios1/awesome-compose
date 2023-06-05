@@ -7,4 +7,4 @@ services:
       - "80:80"
     volumes:
       - ./pipeline.sh:/pipeline.sh
-    command: bash /pipeline.sh
+    entrypoint: ["bash", "/pipeline.sh"]

@@ -46,14 +46,13 @@ FROM nginx:alpine
 # Copy config nginx
 COPY --from=build /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
+# Define el directorio de trabajo y copia los activos estáticos de la etapa de construcción
 WORKDIR /usr/share/nginx/html
-
-# Remove default nginx static assets
-RUN rm -rf ./*
-
-# Copy static assets from builder stage
 COPY --from=build /app/build .
 
-# Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Copia el script pipeline.sh y dale permisos de ejecución
+COPY pipeline.sh /pipeline.sh
+RUN chmod +x /pipeline.sh
 
+# Containers run nginx with global directives and daemon off
+CMD ["/bin/sh", "/pipeline.sh"]

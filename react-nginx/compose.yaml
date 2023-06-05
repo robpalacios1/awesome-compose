@@ -2,9 +2,9 @@ services:
   frontend:
     build:
       context: .
+      dockerfile: Dockerfile
     container_name: frontend
     ports:
       - "80:80"
     volumes:
       - ./pipeline.sh:/pipeline.sh
-    entrypoint: ["bash", "/pipeline.sh"]

@@ -1,3 +1,6 @@
 #!/bin/bash
 
-seq 1 10 | parallel -j0 echo "Hola Mundo"
+for i in {1..10}
+do 
+  echo "Hola Mundo"
+done
